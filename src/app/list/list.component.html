@@ -1,0 +1,62 @@
+<div class="container">
+	<table class="table table-success table-striped table-hover m-5">
+		<thead>
+			<tr>
+				<th scope="col">id</th>
+				<th scope="col">name</th>
+				<th scope="col">email</th>
+				<th scope="col">Phone</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let data of blogd">
+				<th scope="row">{{data.id}}</th>
+				<td>{{data.name}}</td>
+				<td>{{data.email}}</td>
+				<td>{{data.phone}}</td>
+				<td>
+					<!-- <button type="button" (click)="postuserdetail()" class="btn btn-primary m-2">Primary</button> -->
+					<button type="button" (click)="viewuser(data)" class="btn btn-secondary m-1">view</button>
+					<button type="button" (click)="edituser(data)" class="btn btn-primary m-1" data-bs-toggle="modal"
+						data-bs-target="#exampleModal">Update</button>
+					<button type="button" (click)="deleteuser(data)" class="btn btn-danger m-1">Delete</button>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<form [formGroup]="login" (ngSubmit)="getvalue()">
+				<div class="mb-3">
+					<label for="exampleInputPassword1" class="form-label">Name</label>
+					<input formControlName="name" type="text" class="form-control" id="exampleInputPassword1">
+				  </div>
+				<div class="mb-3">
+				  <label for="exampleInputEmail1" class="form-label">Email address</label>
+				  <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+				</div>
+				<div class="mb-3">
+					<label for="exampleInputPassword1" class="form-label">Phone Number</label>
+					<input formControlName="phone" type="text" class="form-control" id="exampleInputPassword1">
+				  </div>
+				<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+			  </form>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="submit" *ngIf="showupdate" (click)=" edituserdetail()" class="btn btn-primary">Update</button>
+		  <button type="button" *ngIf="showadd" class="btn btn-primary">Save changes</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  

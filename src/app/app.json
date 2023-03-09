@@ -1,0 +1,34 @@
+[
+    {
+        "id":1,
+        "name":"soham",
+        "role":"admin",
+        "email":"soham@test.com",
+        "password" : "Soham#123"
+
+    },
+    {
+        "id":2,
+        "name":"manthan",
+        "role":"user",
+        "email":"manthan@test.com",
+        "password" : "Manthan#123"
+
+    },
+    {
+        "id":3,
+        "name":"ajay",
+        "role":"user",
+        "email":"ajay@test.com",
+        "password" : "Ajay#123"
+    },
+    {
+        "id":4,
+        "name":"ved",
+        "role":"admin",
+        "email":"ved@test.com",
+        "password" : "Ved#123"
+    }
+
+
+]
