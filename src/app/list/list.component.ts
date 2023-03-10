@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../service/blog.service';
 import { userModel } from './user.modal';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
 
@@ -15,9 +15,9 @@ export class ListComponent implements OnInit {
   blogd:any;
   // ViewId?:number;
   // formvalue:any;
-  showadd!: Boolean;
+  showadd: Boolean = false;
   isuser: boolean = false;
-  showupdate!:Boolean;
+  showupdate?:Boolean;
   userobj:userModel = new userModel();
 
        constructor(private blogdata:BlogService,private route:Router, private Admin : AuthenticationService){
@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
        ngOnInit(): void {
          this.getsuer();
          if (this.Admin.useru == true) {
-          this.isuser = true
+          this.isuser = true;
          }
        }
       //  getrole(){
@@ -35,15 +35,16 @@ export class ListComponent implements OnInit {
       //  }
 
        login = new FormGroup({
-        name: new FormControl(''),
-        email: new FormControl(''),
-        phone: new FormControl('')
+        name: new FormControl('',[Validators.required]),
+        email: new FormControl('',[Validators.required]),
+        phone: new FormControl('',[Validators.required])
        })
 
        getvalue(){
         console.log(this.login.value);
         
        }
+
        getsuer(){
         this.blogdata.blog().subscribe((data)=>{
           // console.log("data",data);
@@ -56,24 +57,26 @@ export class ListComponent implements OnInit {
         this.showupdate=false;
        }
 
-      //  postuserdetail(){
-      //   // this.userobj.name=this.formvalue.value.name;
-      //   // this.userobj.email=this.formvalue.value.name;
-      //   // this.userobj.phone=this.formvalue.value.name;
-      //   this.userobj.name='hello';
-      //   this.userobj.email='ved@123';
-      //   this.userobj.phone=9909283;
+       postuserdetail(){
 
-      //   this.blogdata.postuser(this.userobj)
-      //   .subscribe((res)=>{
-      //     console.log(res);
-      //     alert("user successfuly added");
-      //     this.formvalue.reset();
-      //     this.getsuer();
+        // this.showupdate=false;
+        // this.userobj.name=this.formvalue.value.name;
+        // this.userobj.email=this.formvalue.value.name;
+        // this.userobj.phone=this.formvalue.value.name;
+        this.userobj.name=this.login.value.name;
+        this.userobj.email=this.login.value.email;
+        this.userobj.phone=this.login.value.phone;
 
-      //   }
-      //   )
-      //  }
+        this.blogdata.postuser(this.userobj)
+        .subscribe((res)=>{
+          console.log(res);
+          alert("user successfuly added");
+          // this.login.reset();
+          this.getsuer();
+
+        }
+        )
+       }
       
 
        deleteuser(row:any){

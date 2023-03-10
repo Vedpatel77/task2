@@ -1,13 +1,54 @@
 <div class="container">
+	<button type="button" class="btn btn-primary mt-2 mb-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="showaddbtn()">Add Blog</button>
+
     <h1 class="text-center mt-5 mb-5 text-decoration-underline">Today's famous Blogs</h1>
     <div *ngFor="let blog of blogdata" class="row mt-3 mb-3">
-        <div class="col-10">
-            <h1>{{blog.title}}</h1>
+        <div class="col-3">
+            <img src="{{blog.url}}" />
+        </div>
+        <div class="col-8">
+            <h2 routerLink="https://dianasleite.medium.com/the-art-of-quitting-lessons-from-my-ph-d-journey-d8499fc17405">{{blog.title}}</h2>
             <h4 class="text-secondary">{{blog.description}}</h4>
         </div>
-        <div class="col-2">
-            <img src="{{blog.url}}" />
+       
+        <div class="col-1">
+            <button type="button" class="btn btn-secondary m-1">view</button>
+            <button type="button" (click)="editblogdetail(blog)" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
+			<button type="button" (click)="deleteblog(blog)" class="btn btn-danger m-1" id="Delete" >Delete</button>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<form [formGroup]="login" (ngSubmit)="getvalue()">
+				<div class="mb-3">
+					<label for="exampleInputPassword1" class="form-label">Title</label>
+					<input formControlName="name" type="text" class="form-control" id="exampleInputPassword1">
+				  </div>
+				<div class="mb-3">
+				  <label for="exampleInputEmail1" class="form-label">Descreption</label>
+				  <input formControlName="email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+				</div>
+				<div class="mb-3">
+					<label for="exampleInputPassword1" class="form-label">url</label>
+					<input formControlName="phone" type="text" class="form-control" id="exampleInputPassword1">
+				  </div>
+				<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+			  </form>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="submit" *ngIf="showupdate" (click)=" editblog()" class="btn btn-primary">Update</button>
+		  <button type="button" *ngIf="showadd" (click)="postblog()" class="btn btn-primary">Save changes</button>
+		</div>
+	  </div>
+	</div>
+  </div>
 

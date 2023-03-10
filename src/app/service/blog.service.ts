@@ -21,12 +21,18 @@ blogs(){
   return this.bhttp.get('http://localhost:3000/userData');
  }
 
-//  postuser(data : any){
-//   return this.bhttp.post<any>('http://localhost:3000/userData',data)
-//   .pipe(map((result:any)=>{
-//     return result;
-//   }))
-//  }
+ postuser(data : any){
+  return this.bhttp.post<any>('http://localhost:3000/userData',data)
+  .pipe(map((result:any)=>{
+    return result;
+  }))
+ }
+ postblog(data : any){
+  return this.bhttp.post<any>('http://localhost:3000/blogs',data)
+  .pipe(map((result:any)=>{
+    return result;
+  }))
+ }
  getuser(){
   return this.bhttp.get<any>('http://localhost:3000/userData')
   .pipe(map((result:any)=>{
@@ -39,8 +45,20 @@ blogs(){
     return result;
   }))
  }
+ updateblog(data : any,id : number){
+  return this.bhttp.put<any>('http://localhost:3000/blogs'+'/'+id,data)
+  .pipe(map((result:any)=>{
+    return result;
+  }))
+ }
  deleteuser(id : number){
   return this.bhttp.delete<any>('http://localhost:3000/userData'+"/"+id)
+  .pipe(map((result:any)=>{
+    return result;
+  }))
+ }
+ deleteblog(id : number){
+  return this.bhttp.delete<any>('http://localhost:3000/blogs'+"/"+id)
   .pipe(map((result:any)=>{
     return result;
   }))

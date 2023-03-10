@@ -10,14 +10,21 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent{
-  // logOut = false; 
+  logIn : boolean = false ;
   constructor(private router:Router,private auths:AuthenticationService ){
   }
 
-  // ngOnInit(){
-  //   console.log(this.auths.islog);
-    
-    
+  ngOnInit(){
+    console.log(this.auths.islog);
+    if(this.auths.islog == true){
+      this.logIn = true;
+      console.log("yes You are logged in");
+    }
+    else{
+      this.logIn = true;
+      // alert("plese login!");       
+    }
+  }
     // if(this.auths.islog == true){
     //   this.logOut = true 
     //   console.log("1");
