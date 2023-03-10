@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   public emailname?: any = '';
   public passname?: any = '';
   userrole:any;
+  admin : any = false;
+  user : any = false
   logedin?:boolean=false;
   
 
@@ -54,7 +56,8 @@ export class LoginComponent implements OnInit {
   check(email:any,password:any) {
     console.log(email);
     console.log(password);
-  
+    console.log(this.auth.islog);
+    
 
     for (let index = 0; index < this.userdata.length; index++) {
       // const element = array[index];
@@ -66,13 +69,19 @@ export class LoginComponent implements OnInit {
 
       if (email === objectofdata.email && password === objectofdata.password && objectofdata.role === "admin") {
         this.logedin=true;
-
+        this.admin = true;
+        this.user = false;
+        this.auth.AdminLoged(this.admin = true , this.user = false)
+        this.auth.loged(this.logedin);
         this.router.navigate(['/list']);
        
       }
       else if(email === objectofdata.email && password === objectofdata.password && objectofdata.role === "user"){
         this.logedin=true;
-
+        this.admin = false;
+        this.user = true;
+        this.auth.AdminLoged(this.admin = false , this.user = true)
+        this.auth.loged(this.logedin);
         this.router.navigate(['/blog']);
       }
       console.log('complete');

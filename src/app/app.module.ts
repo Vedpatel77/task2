@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BlogComponent } from './blog/blog.component';
 import { ViewuserComponent } from './viewuser/viewuser.component';
 import { UserauGuard } from './guard/userau.guard';
+import { HomeblogComponent } from './homeblog/homeblog.component';
 
 
 
@@ -23,7 +24,8 @@ import { UserauGuard } from './guard/userau.guard';
     LoginComponent,
     ListComponent,
     BlogComponent,
-    ViewuserComponent
+    ViewuserComponent,
+    HomeblogComponent
   ],
   imports: [
     BrowserModule,

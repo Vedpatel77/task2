@@ -9,7 +9,7 @@ import { AuthenticationService } from '../service/authentication.service';
 export class UserauGuard implements CanActivate {
   constructor(private logeds:AuthenticationService){}
   canActivate() {
-      if (this.logeds.loggedin()) {
+      if (this.logeds.isloggedin()) {
         return true;
       } else {
         return false;

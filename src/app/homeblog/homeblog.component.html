@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let blog of homeblogdata" class="col-4 mt-3">
+      <div class="card" style="width: 18rem;">
+        <img src="{{blog.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{blog.title}}</h5>
+          <p class="card-text">{{blog.description}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button (click)="loginpage()" type="button" class="btn btn-outline-primary btn-lg m-4">Read more blogs!</button>
+  </div>
+
+</div>

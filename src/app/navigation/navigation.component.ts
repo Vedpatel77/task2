@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../service/authentication.service';
 // import { LoginComponent } from '../login/login.component';
 // Router
 
@@ -8,14 +9,39 @@ import { Router } from '@angular/router';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent {
-  constructor(private router:Router ){
-
+export class NavigationComponent{
+  // logOut = false; 
+  constructor(private router:Router,private auths:AuthenticationService ){
   }
 
+  // ngOnInit(){
+  //   console.log(this.auths.islog);
+    
+    
+    // if(this.auths.islog == true){
+    //   this.logOut = true 
+    //   console.log("1");
+      
+    // }
+    // else{
+    //   this.logOut = false
+    //   console.log('2');
+      
+    // }
+  // }
   gotologin(){
     // console.log(loginpage);
     
       this.router.navigate(['/login']);
+  }
+  logout(event:Event){
+    if(this.auths.islog == true){
+    
+        this.auths.islog=false;
+        this.router.navigate(['']);    
+      }
+      else{
+        alert("plese login!");       
+      }
   }
 }

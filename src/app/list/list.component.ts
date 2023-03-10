@@ -3,6 +3,7 @@ import { BlogService } from '../service/blog.service';
 import { userModel } from './user.modal';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-list',
@@ -15,16 +16,23 @@ export class ListComponent implements OnInit {
   // ViewId?:number;
   // formvalue:any;
   showadd!: Boolean;
+  isuser: boolean = false;
   showupdate!:Boolean;
   userobj:userModel = new userModel();
 
-       constructor(private blogdata:BlogService,private route:Router){
+       constructor(private blogdata:BlogService,private route:Router, private Admin : AuthenticationService){
              
        }
 
        ngOnInit(): void {
          this.getsuer();
+         if (this.Admin.useru == true) {
+          this.isuser = true
+         }
        }
+      //  getrole(){
+      //   this.Admin.role()
+      //  }
 
        login = new FormGroup({
         name: new FormControl(''),
@@ -66,6 +74,7 @@ export class ListComponent implements OnInit {
       //   }
       //   )
       //  }
+      
 
        deleteuser(row:any){
         console.log(row.id);

@@ -7,17 +7,36 @@ import { Injectable } from '@angular/core';
 export class AuthenticationService {
 
   constructor(private ahttp:HttpClient) { }
+  islog?: boolean;
+  adminu?:Boolean;
+  useru?:Boolean;
   
   logged_person(){
     return this.ahttp.get('http://localhost:3000/Data');
   }
-  name1(props : any) {
+
+
+  loged(props : any) {
     // const datad = props
-    console.log(props);
+    this.islog=props;
+    // console.log(props);
     
   }
 
-  loggedin(){
-    return true;
+  logout(){
+    this.islog==false;
+    return false;
+  }
+
+  AdminLoged(admin : boolean , user : boolean){
+    this.useru=user; 
+  } 
+
+  isloggedin(){ 
+    if (this.islog==true) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

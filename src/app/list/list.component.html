@@ -19,8 +19,8 @@
 					<!-- <button type="button" (click)="postuserdetail()" class="btn btn-primary m-2">Primary</button> -->
 					<button type="button" (click)="viewuser(data)" class="btn btn-secondary m-1">view</button>
 					<button type="button" (click)="edituser(data)" class="btn btn-primary m-1" data-bs-toggle="modal"
-						data-bs-target="#exampleModal">Update</button>
-					<button type="button" (click)="deleteuser(data)" class="btn btn-danger m-1">Delete</button>
+						data-bs-target="#exampleModal" [hidden]="isuser">Update</button>
+					<button type="button" (click)="deleteuser(data)" [hidden]="isuser" class="btn btn-danger m-1" id="Delete">Delete</button>
 				</td>
 			</tr>
 

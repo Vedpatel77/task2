@@ -10,6 +10,10 @@ export class BlogService {
   constructor(private bhttp:HttpClient) { }
 
 
+  home_blog(){
+    return this.bhttp.get('http://localhost:3000/homeblogs');
+  }
+
 blogs(){
   return this.bhttp.get('http://localhost:3000/blogs');
 }
