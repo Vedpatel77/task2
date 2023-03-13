@@ -6,6 +6,7 @@ import { BlogComponent } from './blog/blog.component';
 import { ViewuserComponent } from './viewuser/viewuser.component';
 import { UserauGuard } from './guard/userau.guard';
 import { HomeblogComponent } from './homeblog/homeblog.component';
+import { ViewblogComponent } from './viewblog/viewblog.component';
 
 const routes: Routes = [
   {path:'',component:HomeblogComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'list',component:ListComponent,canActivate:[UserauGuard]},
   {path:'blog',component:BlogComponent,canActivate:[UserauGuard]},
   {path:'viewuser/:ViewId',component:ViewuserComponent},
+  {path:'viewblog/:ViewId',component:ViewblogComponent}
 ];
 
 @NgModule({

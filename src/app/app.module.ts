@@ -14,6 +14,7 @@ import { BlogComponent } from './blog/blog.component';
 import { ViewuserComponent } from './viewuser/viewuser.component';
 import { UserauGuard } from './guard/userau.guard';
 import { HomeblogComponent } from './homeblog/homeblog.component';
+import { ViewblogComponent } from './viewblog/viewblog.component';
 
 
 
@@ -25,7 +26,8 @@ import { HomeblogComponent } from './homeblog/homeblog.component';
     ListComponent,
     BlogComponent,
     ViewuserComponent,
-    HomeblogComponent
+    HomeblogComponent,
+    ViewblogComponent
   ],
   imports: [
     BrowserModule,

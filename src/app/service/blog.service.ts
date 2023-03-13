@@ -69,6 +69,12 @@ blogs(){
     return result;
   }))
  }
+ viewblog(id : number){
+  return this.bhttp.get<any>('http://localhost:3000/blogs'+"/"+id)
+  .pipe(map((result:any)=>{
+    return result;
+  }))
+ }
 // deleteuser(id:number):Observable<number>{
 //   let httpheaders=new HttpHeaders()
 //   .set('Content-type','application/Json');

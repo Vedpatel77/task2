@@ -12,9 +12,9 @@
         </div>
        
         <div class="col-1">
-            <button type="button" class="btn btn-secondary m-1">view</button>
-            <button type="button" (click)="editblogdetail(blog)" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
-			<button type="button" (click)="deleteblog(blog)" class="btn btn-danger m-1" id="Delete" >Delete</button>
+            <button type="button" (click)="viewblog(blog)" class="btn btn-secondary m-1">view</button>
+            <button type="button" [hidden]="isuser" (click)="editblogdetail(blog)" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
+			<button type="button" [hidden]="isuser" (click)="deleteblog(blog)" class="btn btn-danger m-1" id="Delete" >Delete</button>
         </div>
     </div>
 </div>

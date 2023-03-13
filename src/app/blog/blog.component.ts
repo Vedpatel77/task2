@@ -3,6 +3,7 @@ import { BlogService } from '../service/blog.service';
 import { blogModel } from './blog.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../service/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -15,14 +16,14 @@ export class BlogComponent implements OnInit {
   showupdate?:Boolean;
   blogobj:blogModel = new blogModel();
   blogdata:any;
-  // isuser: boolean = false;
-  constructor(private blogservice:BlogService,private Admin : AuthenticationService){}
+  isuser: boolean = false;
+  constructor(private blogservice:BlogService,private route:Router,private Admin : AuthenticationService){}
 
    ngOnInit(): void {
-      // this.getblog();
-      // if (this.Admin.useru == true) {
-      //  this.isuser = true;
-      // }
+      this.getblog();
+      if (this.Admin.useru == true) {
+       this.isuser = true;
+      }
     
      this.blogservice.blogs().subscribe(res=>{
       console.log(res);
@@ -62,6 +63,13 @@ export class BlogComponent implements OnInit {
         this.blogdata=res;
       })
     }
+
+    viewblog(row:any){
+      // this.ViewId=row.id;
+      // console.log(this.ViewId);
+      
+        this.route.navigate(['viewblog',row.id]);
+     }
 
     postblog(){
       this.blogobj.title=this.login.value.name;
