@@ -10,40 +10,42 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent{
+
+  isuseradmin:any=this.auths.isloggedin();
   logIn : boolean = false ;
   constructor(private router:Router,private auths:AuthenticationService ){
   }
-
+  
   ngOnInit(){
-    console.log(this.auths.islog);
-    if(this.auths.islog == true){
-      this.logIn = true;
-      console.log("yes You are logged in");
+    
+
+
+  }
+
+
+  check(){
+    if(this.auths.isloggedin() == true){
+      return true;
+    }
+    else if(this.auths.isloggedin() == false){
+      return false;
     }
     else{
-      this.logIn = true;
-      // alert("plese login!");       
+      return false;
     }
-  }
-    // if(this.auths.islog == true){
-    //   this.logOut = true 
-    //   console.log("1");
-      
-    // }
-    // else{
-    //   this.logOut = false
-    //   console.log('2');
-      
-    // }
-  // }
+  } 
   gotologin(){
     // console.log(loginpage);
-    
+
       this.router.navigate(['/login']);
   }
-  logout(event:Event){
-    if(this.auths.islog == true){
+  logedinuseradmin(){
+      // return localStorage.getItem('token');
+  }
+  logout(){
     
+    // localStorage.removeItem('token');
+    if(this.auths.islog == true){
         this.auths.islog=false;
         this.router.navigate(['']);    
       }

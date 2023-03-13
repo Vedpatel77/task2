@@ -19,9 +19,9 @@
         <!-- <form class="d-flex" role="search"> -->
           <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
           
-          <button class="btn btn-outline-success"  (click)="gotologin()" type="submit">Admin</button>
+          <button class="btn btn-outline-success" *ngIf="check() == false" (click)="gotologin()" type="submit">Admin</button>
           <!-- <ng-template #Showlogout> -->
-            <button class="btn btn-outline-success m-2" (click)="logout($event)"  type="button">Logout</button>
+          <button class="btn btn-outline-success m-2" *ngIf="check() == true " (click)="logout()"  type="button">Logout</button>
           <!-- </ng-template> -->
           
 
